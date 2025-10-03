@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏆 TBowl - AI Financial Assistant</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Login Screen -->
+    <div id="loginScreen" class="login-container">
+        <div class="login-box">
+            <h1>🏆 TBowl</h1>
+            <h2>AI Financial Assistant</h2>
+            <form id="loginForm">
+                <input type="password" id="passwordInput" placeholder="Enter Password" required>
+                <button type="submit">Login</button>
+            </form>
+            <p id="loginError" class="error-message"></p>
+        </div>
+    </div>
+
+    <!-- Main Application -->
+    <div id="mainApp" style="display: none;">
+        <header>
+            <div class="header-content">
+                <div class="title-section">
+                    <h1>🏆 TBowl - AI Financial Assistant</h1>
+                    <p class="subtitle">Powered by OpenAI GPT</p>
+                </div>
+                <button id="logoutBtn" class="logout-btn">Logout</button>
+            </div>
+        </header>
+
+        <div class="container">
+            <aside class="sidebar">
+                <h3>📊 Financial Tools</h3>
+                <div class="mode-selector">
+                    <button class="mode-btn active" data-mode="stock">Stock Analysis</button>
+                    <button class="mode-btn" data-mode="advice">Financial Advice</button>
+                    <button class="mode-btn" data-mode="portfolio">Portfolio Overview</button>
+                </div>
+            </aside>
+
+            <main class="main-content">
+                <!-- Stock Analysis Mode -->
+                <div id="stockMode" class="mode-content active">
+                    <h2>Stock Analysis</h2>
+                    
+                    <div class="search-section">
+                        <h3>Search for a Stock</h3>
+                        <div class="search-box">
+                            <input type="text" id="stockSearch" placeholder="e.g., Apple, AAPL, Microsoft...">
+                            <button id="searchBtn">Search</button>
+                        </div>
+                        <div id="searchResults" class="search-results"></div>
+                    </div>
+
+                    <div id="stockDetails" class="stock-details" style="display: none;">
+                        <div class="stock-header">
+                            <h3 id="stockName"></h3>
+                            <button id="clearStock" class="clear-btn">Search Different Stock</button>
+                        </div>
+                        
+                        <div class="metrics-grid" id="metricsGrid"></div>
+                        
+                        <div class="chart-container">
+                            <canvas id="priceChart"></canvas>
+                        </div>
+
+                        <div class="ai-analysis">
+                            <h3>🤖 AI Analysis</h3>
+                            <textarea id="analysisQuestion" placeholder="Ask about this stock..."></textarea>
+                            <button id="getAnalysisBtn">Get AI Analysis</button>
+                            <div id="analysisResult" class="result-box"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Financial Advice Mode -->
+                <div id="adviceMode" class="mode-content">
+                    <h2>General Financial Advice</h2>
+                    
+                    <div class="quick-questions">
+                        <h3>Quick Questions</h3>
+                        <select id="quickQuestions">
+                            <option value="">Select a question...</option>
+                            <option>What are the basics of investing?</option>
+                            <option>How should I diversify my portfolio?</option>
+                            <option>What's the difference between stocks and bonds?</option>
+                            <option>How much should I save for retirement?</option>
+                            <option>What are common investment mistakes to avoid?</option>
+                        </select>
+                    </div>
+
+                    <div class="custom-question">
+                        <h3>Ask Your Own Question</h3>
+                        <textarea id="customQuestion" placeholder="e.g., How do I start investing with $1000?"></textarea>
+                        <button id="getAdviceBtn">Get Advice</button>
+                        <div id="adviceResult" class="result-box"></div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Mode -->
+                <div id="portfolioMode" class="mode-content">
+                    <h2>Portfolio Overview</h2>
+                    <p class="info-text">Enter your holdings below (one symbol per line):</p>
+                    
+                    <textarea id="portfolioInput" placeholder="AAPL&#10;GOOGL&#10;TSLA&#10;MSFT"></textarea>
+                    <button id="analyzePortfolioBtn">Analyze Portfolio</button>
+                    
+                    <div id="portfolioResults" class="portfolio-results"></div>
+                    <div id="portfolioAnalysis" class="result-box"></div>
+                </div>
+            </main>
+        </div>
+
+        <footer>
+            <p><strong>Disclaimer:</strong> This tool provides educational content for informational purposes only. 
+            Not financial advice. Consult qualified professionals before making investment decisions.</p>
+        </footer>
+    </div>
+
+    <div id="loader" class="loader" style="display: none;">
+        <div class="spinner"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module" src="app.js"></script>
+</body>
+</html>
